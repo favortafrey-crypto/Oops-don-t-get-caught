@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cqow47bch5ocs"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1vivr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1vivr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vivr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1vivr"]
+
+[node name="main" type="Node3D" unique_id=1954370866]
+
+[node name="player" type="CharacterBody3D" parent="." unique_id=399459520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="body" type="MeshInstance3D" parent="player" unique_id=1046946056]
+mesh = SubResource("CapsuleMesh_1vivr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=733007230]
+shape = SubResource("CapsuleShape3D_1vivr")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="player" unique_id=130069412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+spring_length = 6.0
+
+[node name="Camera3D" type="Camera3D" parent="player/SpringArm3D" unique_id=8770068]
+
+[node name="ground" type="StaticBody3D" parent="." unique_id=1654236314]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground" unique_id=1472343475]
+shape = SubResource("BoxShape3D_1vivr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ground" unique_id=355785677]
+transform = Transform3D(10, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_1vivr")
