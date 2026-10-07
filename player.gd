@@ -32,8 +32,6 @@ func _physics_process(delta):
 		transform.basis.x * input_direction.x
 		+ transform.basis.z * input_direction.y
 	).normalized()
-
-	
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
