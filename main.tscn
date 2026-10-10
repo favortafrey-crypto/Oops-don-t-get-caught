@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://brcecc7yvebjo" path="res://assets/furniture/chairCushion.glb" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://fm47br5p8sqw" path="res://assets/door_8_grp.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dc417rh8awydy" path="res://assets/door_3_grp.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dj1yf15c8f4xb" path="res://assets/deco/tree_simple_dark.glb" id="5_272bh"]
+[ext_resource type="PackedScene" uid="uid://sjifwtqasexm" path="res://assets/furniture/chair.glb" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://662c3gfm55tr" path="res://assets/deco/tree_pineTallB.glb" id="6_7mycd"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1vivr"]
 
@@ -260,6 +263,9 @@ albedo_color = Color(0.4, 0.2509804, 0.15686275, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_82xsv"]
 size = Vector3(1.4443359, 0.07849121, 1.7128372)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5xg34"]
+size = Vector3(0.2644043, 1.3081055, 0.6425781)
+
 [sub_resource type="BoxMesh" id="BoxMesh_getpj"]
 size = Vector3(0.60302734, 5.4034424, 3.8886719)
 
@@ -268,6 +274,9 @@ albedo_color = Color(0.4, 0.2509804, 0.15686275, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ryguw"]
 size = Vector3(1.2387695, 0.110458374, 3.8397903)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbdty"]
+size = Vector3(0.36480713, 0.9489746, 0.34765625)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rw4ux"]
 size = Vector3(1.7494507, 0.6074219, 8.731384)
@@ -313,6 +322,9 @@ albedo_color = Color(0.4, 0.2509804, 0.15686275, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_owv0m"]
 size = Vector3(1.5274658, 0.05657959, 0.23168945)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_auskg"]
+size = Vector3(0.21173096, 1.4350586, 0.23510742)
 
 [node name="main" type="Node3D" unique_id=1954370866]
 
@@ -674,6 +686,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qsp4k")
 transform = Transform3D(-0.3095554, 9.995208, 0, -9.995208, -0.3095554, 0, 0, 0, 10, 35, 2.6793442, 56.965553)
 shape = SubResource("BoxShape3D_82xsv")
 
+[node name="tree_simple_dark2" parent="ground/room2/wall 10" unique_id=1577596714 instance=ExtResource("5_272bh")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 49.5125, 0.07113533, 63.13952)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground/room2/wall 10/tree_simple_dark2" unique_id=2047169989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036010742, 0.15405275, 0.17871094)
+shape = SubResource("BoxShape3D_5xg34")
+
 [node name="wall 11" type="StaticBody3D" parent="ground/room2" unique_id=1561841703]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ground/room2/wall 11" unique_id=1219472555]
@@ -684,6 +703,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jq2sk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground/room2/wall 11" unique_id=686636850]
 transform = Transform3D(0.010962206, -0.3488224, -9.993908, -9.995066, -0.31410816, 0, -0.31391683, 9.9889765, -0.3489946, 54.77329, 3.9333613, 65.39441)
 shape = SubResource("BoxShape3D_ryguw")
+
+[node name="chair" parent="ground/room2/wall 11" unique_id=1691207838 instance=ExtResource("5_lquwl")]
+transform = Transform3D(-0.5609106, 0, 7.980312, 0, 8, 0, -7.980312, 0, -0.5609106, 58.33564, 0.021129608, 12.213863)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground/room2/wall 11/chair" unique_id=1302702793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05282533, -0.025512695, -0.326169)
+shape = SubResource("BoxShape3D_qbdty")
 
 [node name="room 2" type="StaticBody3D" parent="." unique_id=1675090267]
 
@@ -742,3 +768,10 @@ shape = SubResource("BoxShape3D_owv0m")
 
 [node name="Door_8_grp" parent="." unique_id=569848370 instance=ExtResource("3_1bvp3")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.2615491, -0.13626194, 6)
+
+[node name="tree_pineTallB2" parent="." unique_id=636175408 instance=ExtResource("6_7mycd")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 84.98058, 0.07114105, 33.187897)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tree_pineTallB2" unique_id=1582365982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05130005, 0.2175293, 0.07702637)
+shape = SubResource("BoxShape3D_auskg")

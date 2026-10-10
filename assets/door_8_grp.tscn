@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://fm47br5p8sqw"]
 
 [ext_resource type="Texture2D" uid="uid://bh58lyywrn44y" path="res://assets/DoorsAsset_DoorSet_Base Color.png" id="1_2kqj3"]
+[ext_resource type="Script" uid="uid://c816s87obt7bo" path="res://assets/door_8_grp.gd" id="1_gryx5"]
 [ext_resource type="Texture2D" uid="uid://b57fnp525h7wl" path="res://assets/DoorsAsset_DoorSet_METALLIC-DoorSet_ROUGHNESS.png" id="2_o8tnt"]
 [ext_resource type="Texture2D" uid="uid://be5xr0uitqwkg" path="res://assets/DoorsAsset_DoorSet_NORMAL.png" id="3_gryx5"]
 [ext_resource type="AudioStream" uid="uid://beiw363kpwa8o" path="res://assets/sounds/door_02.ogg" id="4_o8tnt"]
@@ -172,6 +173,7 @@ _data = {
 size = Vector3(0.78778076, 0.96813965, 0.062438965)
 
 [node name="Door_8_grp" type="Node3D" unique_id=647232201]
+script = ExtResource("1_gryx5")
 
 [node name="Door_8" type="MeshInstance3D" parent="." unique_id=417650675]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60049057, 0, -0.22633874)
@@ -200,3 +202,6 @@ libraries/ = SubResource("AnimationLibrary_0yv2a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactionArea" unique_id=319854672]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.2318573, 1.7396545, -1.0284777)
 shape = SubResource("BoxShape3D_1vivr")
+
+[connection signal="body_entered" from="interactionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interactionArea" to="." method="_on_interaction_area_body_exited"]
