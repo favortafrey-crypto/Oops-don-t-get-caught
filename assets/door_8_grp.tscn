@@ -52,7 +52,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mqeny")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8vrlf"]
-size = Vector3(1.2140503, 2.3084106, 0.15960693)
+size = Vector3(1.2140503, 2.467682, 0.27903748)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ci586"]
 _surfaces = [{
@@ -170,7 +170,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vivr"]
-size = Vector3(0.78778076, 0.96813965, 0.062438965)
+size = Vector3(0.4476776, 0.81967163, 0.33229828)
 
 [node name="Door_8_grp" type="Node3D" unique_id=647232201]
 script = ExtResource("1_gryx5")
@@ -182,7 +182,7 @@ mesh = SubResource("ArrayMesh_rn6nd")
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Door_8" unique_id=995686799]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_8/AnimatableBody3D" unique_id=236890285]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60983276, 1.249054, 0.039276242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60983276, 1.1694183, 0.09899151)
 shape = SubResource("BoxShape3D_8vrlf")
 
 [node name="DoorFrame_8" type="MeshInstance3D" parent="." unique_id=1778965412]
@@ -200,7 +200,7 @@ libraries/ = SubResource("AnimationLibrary_0yv2a")
 [node name="interactionArea" type="Area3D" parent="." unique_id=2042302925]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactionArea" unique_id=319854672]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.2318573, 1.7396545, -1.0284777)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.39857864, 2.0098495, -0.43768597)
 shape = SubResource("BoxShape3D_1vivr")
 
 [connection signal="body_entered" from="interactionArea" to="." method="_on_interaction_area_body_entered"]
