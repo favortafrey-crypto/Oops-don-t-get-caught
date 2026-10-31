@@ -181,7 +181,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vivr"]
-size = Vector3(0.45751953, 0.92759705, 0.23877245)
+size = Vector3(0.45751953, 0.92759705, 0.3223884)
 
 [node name="Door_3_grp" type="Node3D" unique_id=203079874]
 script = ExtResource("1_mrnr3")
@@ -212,7 +212,7 @@ libraries/ = SubResource("AnimationLibrary_lppkn")
 [node name="interactionArea" type="Area3D" parent="." unique_id=801961542]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactionArea" unique_id=1788000225]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.17109543, 1.3353866, 0.1011294)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.17109543, 1.3353866, -0.0033905506)
 shape = SubResource("BoxShape3D_1vivr")
 
 [connection signal="body_entered" from="interactionArea" to="." method="_on_interaction_area_body_entered"]

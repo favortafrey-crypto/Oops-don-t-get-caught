@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0gd8hrqpvtbb" path="res://player.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://brcecc7yvebjo" path="res://assets/furniture/chairCushion.glb" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://dvabncr3cvdgw" path="res://assets/player.zombie/male character/Superhero_Male_FullBody.gltf" id="2_b1qrp"]
+[ext_resource type="PackedScene" uid="uid://badjhrh4ynwua" path="res://assets/player.zombie/male character/uperhero_male_full_body.tscn" id="2_b1qrp"]
 [ext_resource type="PackedScene" uid="uid://fm47br5p8sqw" path="res://assets/door_8_grp.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://2sng88mmr615" path="res://assets/player.zombie/female.glb" id="3_ok6jj"]
 [ext_resource type="PackedScene" uid="uid://ci2rutqfqu8sl" path="res://assets/furniture/loungeDesignSofa.glb" id="3_vivmo"]
@@ -357,7 +357,7 @@ size = Vector3(1.5274658, 0.05657959, 0.23168945)
 transform = Transform3D(0.8660254, 0.38302222, -0.32139382, 0, 0.64278764, 0.76604444, 0.5, -0.66341394, 0.5566704, 0, 0, 0)
 
 [node name="player" type="CharacterBody3D" parent="." unique_id=399459520]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(0.898833, 0, -0.43829113, 0, 1, 0, 0.43829113, 0, 0.898833, 0, 0.10961893, 0)
 script = ExtResource("1_ig7tw")
 
 [node name="body" type="MeshInstance3D" parent="player" unique_id=1046946056]
@@ -367,8 +367,7 @@ mesh = SubResource("CapsuleMesh_1vivr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=733007230]
 shape = SubResource("CapsuleShape3D_1vivr")
 
-[node name="Superhero_Male_FullBody" parent="player/CollisionShape3D" unique_id=1065523110 instance=ExtResource("2_b1qrp")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.8918905, 0)
+[node name="Superhero_Male_FullBody" parent="player/CollisionShape3D" unique_id=278553568 instance=ExtResource("2_b1qrp")]
 
 [node name="SpringArm3D" type="SpringArm3D" parent="player" unique_id=130069412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -486,7 +485,7 @@ shape = SubResource("BoxShape3D_o5tgd")
 [node name="chair_o1" type="StaticBody3D" parent="ground" unique_id=1754952045]
 
 [node name="chair-01" parent="ground/chair_o1" unique_id=1503524619 instance=ExtResource("2_0xm2m")]
-transform = Transform3D(0.30642903, 0, -3.9882455, 0, 4, 0, 3.9882455, 0, 0.30642903, 1.5066745, 0.23661959, 1.1774894)
+transform = Transform3D(-0.6071908, 0, -3.9536467, 0, 4, 0, 3.9536467, 0, -0.6071908, 1.5066745, 0.23661959, 1.1774894)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground/chair_o1" unique_id=1808441806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9782183, 1.2375938, 1.7906233)
@@ -928,5 +927,5 @@ transform = Transform3D(8, 0, 0, 0, 3.303769, 7.285953, 0, -7.285953, 3.303769, 
 
 [node name="backgroundaudio" type="AudioStreamPlayer" parent="." unique_id=775906631]
 stream = ExtResource("37_b1qrp")
-volume_db = 21.585
+volume_db = 10.0
 script = ExtResource("38_come4")
