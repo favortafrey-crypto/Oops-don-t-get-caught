@@ -48,6 +48,8 @@ func _physics_process(delta: float) -> void:
 	).normalized()
 
 	var sprinting := Input.is_action_pressed("run")
+	print("Sprint key: ", sprinting)
+
 	var current_speed := sprint_speed if sprinting else speed
 
 	velocity.x = direction.x * current_speed
@@ -72,6 +74,7 @@ func _physics_process(delta: float) -> void:
 		if direction.length() < 0.01:
 			play_animation("player/Idle")
 		elif sprinting:
+			print("SPRINT ANIMATION REQUESTED")
 			play_animation("player/Sprint")
 		else:
 			play_animation("player/Walk")

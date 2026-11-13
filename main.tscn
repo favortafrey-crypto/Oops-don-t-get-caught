@@ -42,6 +42,8 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1vivr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1vivr"]
+radius = 0.4032364
+height = 1.0584002
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vivr"]
 
@@ -365,9 +367,11 @@ visible = false
 mesh = SubResource("CapsuleMesh_1vivr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=733007230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12034611, 0.4927319, -0.24680173)
 shape = SubResource("CapsuleShape3D_1vivr")
 
 [node name="Superhero_Male_FullBody" parent="player/CollisionShape3D" unique_id=278553568 instance=ExtResource("2_b1qrp")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0844379, -0.48442078, -0.041173816)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="player" unique_id=130069412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
