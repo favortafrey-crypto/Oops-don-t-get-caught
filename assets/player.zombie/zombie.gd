@@ -34,7 +34,6 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if player.get("game_over") or player.get("game_won"):
-		print("ZOMBIE STOPPED: GAME ENDED")
 		velocity = Vector3.ZERO
 		return
 
