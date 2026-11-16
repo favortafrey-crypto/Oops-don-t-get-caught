@@ -17,20 +17,25 @@ var was_punching: bool = false
 
 var player: Node3D
 var is_chasing: bool = false
+var detection_sound: AudioStreamPlayer3D
+var groan_timer: float = 3.0
+
+@export var groan_interval: float = 80.0
 
 
 func _ready() -> void:
 	player = get_parent().get_node_or_null("player")
-
-	if player == null:
-		push_warning("PLAYER NOT FOUND!")
-	else:
-		print("ZOMBIE READY!")
-		print("PLAYER FOUND!")
+	detection_sound = get_node_or_null("DetectionSound") as AudioStreamPlayer3D
 
 
 func _physics_process(delta: float) -> void:
+
 	if player == null:
+		return
+
+	if player.get("game_over") or player.get("game_won"):
+		print("ZOMBIE STOPPED: GAME ENDED")
+		velocity = Vector3.ZERO
 		return
 
 	var direction: Vector3 = player.global_position - global_position
@@ -41,8 +46,19 @@ func _physics_process(delta: float) -> void:
 	# Detection and chasing
 	if not is_chasing and distance <= detection_distance:
 		is_chasing = true
+		groan_timer = 10.0
+
 	elif is_chasing and distance > lose_distance:
 		is_chasing = false
+		groan_timer = 10.0
+
+	# Zombie groan timing
+	if is_chasing and detection_sound != null:
+		groan_timer -= delta
+
+		if groan_timer <= 0.0:
+			detection_sound.play()
+			groan_timer = groan_interval
 
 	# Movement
 	if is_chasing and distance > 0.6:
@@ -75,7 +91,6 @@ func _physics_process(delta: float) -> void:
 	# Damage player
 	if distance <= attack_distance:
 		if not currently_punching and attack_cooldown <= 0.0:
-			
 			player.call("take_damage", damage_amount)
 			attack_cooldown = attack_interval
 

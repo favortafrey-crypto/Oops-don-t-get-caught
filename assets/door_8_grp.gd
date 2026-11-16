@@ -42,3 +42,8 @@ func _input(event: InputEvent) -> void:
 			door_open = false
 
 		is_moving = false
+
+
+func _on_victory_area_body_entered(body: Node3D) -> void:
+	if body.name == "player":
+		body.call("win_game")

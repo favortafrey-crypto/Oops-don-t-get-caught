@@ -11,12 +11,18 @@ extends CharacterBody3D
 @onready var game_over_screen: Control = get_tree().current_scene.get_node("HUD/GameOverScreen")
 @onready var win_screen: Control = get_tree().current_scene.get_node("HUD/WinScreen")
 @onready var restart_button: Button = get_tree().current_scene.get_node("HUD/GameOverScreen/RestartButton")
+@onready var play_again_button: Button = get_tree().current_scene.get_node("HUD/WinScreen/PlayAgainButton")
+@onready var breathing_sound: AudioStreamPlayer3D = $BreathingSound
+@onready var punch_sound: AudioStreamPlayer3D = $PunchSound
 
 var is_punching := false
 var punch_number := 0
 
 @export var max_health: float = 100.0
 var health: float = 100.0
+var time_since_damage: float = 0.0
+@export var regeneration_delay: float = 10.0
+@export var regeneration_rate: float = 3.0
 
 var game_over := false
 var game_won := false
@@ -31,10 +37,9 @@ func _ready() -> void:
 	win_screen.hide()
 
 	restart_button.pressed.connect(_on_restart_pressed)
-
+	play_again_button.pressed.connect(_on_play_again_pressed)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-	print("Animations available: ", animation_player.get_animation_list())
 	animation_player.animation_finished.connect(_on_animation_finished)
 
 
@@ -63,6 +68,9 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if game_over or game_won:
 		return
+
+	update_health_regeneration(delta)
+	
 
 	var input_direction := Input.get_vector(
 		"left", "right", "forward", "backward"
@@ -119,11 +127,13 @@ func play_animation(animation_name: String) -> void:
 
 
 func take_damage(amount: float) -> void:
-	print("DAMAGE FUNCTION REACHED: ", amount)
+	
 	if game_over or game_won:
 		return
 
 	health -= amount
+	time_since_damage = 0.0
+	
 	health = maxf(health, 0.0)
 	health_bar.value = health
 
@@ -134,8 +144,32 @@ func take_damage(amount: float) -> void:
 		velocity = Vector3.ZERO
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		game_over_screen.show()
+		print("GAME OVER SCREEN ACTIVATED")
 		print("PLAYER DIED")
 
 
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
+
+func win_game() -> void:
+
+	if game_over or game_won:
+		return
+
+	game_won = true
+	velocity = Vector3.ZERO
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	win_screen.show()
+
+func _on_play_again_pressed() -> void:
+	print("PLAY AGAIN BUTTON PRESSED!")
+	get_tree().reload_current_scene()
+func update_health_regeneration(delta: float) -> void:
+	if health >= max_health:
+		return
+
+	time_since_damage += delta
+
+	if time_since_damage >= regeneration_delay:
+		health = minf(health + regeneration_rate * delta, max_health)
+		health_bar.value = health
