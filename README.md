@@ -1,5 +1,5 @@
 # Wait don't die
-This is a game about some really friendly zombies(😜) that really like the main player so thy come closer to him to become friends but end up bimistakenly killing him 😶
+This is a game about some really friendly zombies(😜) that really like the main player so thy come closer to him to become friends but end up mistakenly killing him 😶
 
 # Purpose
 I have always made 2D games so i thought maybe i should try something new and challenge myself. And i swear it was not easy, along the way alot of the features I originally wanted kept on changing because of how defficult they were. But I must admit this was a whole new something for me that took comitment and a lot of learning. I head lots of fun and will one day love to advance this game further.
@@ -15,7 +15,7 @@ So they game goes like this:
     - "D", "right arrow"; for moving right
     - "O", for punching and 
     - "E", to open and close doors.
-- A player has to pass through the final door inorder to win and no one except me, knows the door for now(I mean as i'm writing this)
+- A player has to pass through the final door in order to win and no one except me, knows the door for now(I mean as I'm writing this)
 - when blood health drops to zero, you die.
 
 # files in this game
